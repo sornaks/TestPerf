@@ -1,0 +1,17 @@
+﻿@model TemplateRendererApp.User
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Simple Template Renderer sample.</title>
+</head>
+<body>
+    @Html.LabelFor(Model => Model.Name)
+    @Html.TextBoxFor(Model => Model.Name)
+    <br /><br />
+    @Html.LabelFor(Model => Model.PastJobs)
+    @Html.DropDownListFor(Model => Model.PastJobs, (IEnumerable<SelectListItem>)ViewBag.PastJobs)
+    <br /><br />
+    This is a simple View.
+</body>
+</html>
