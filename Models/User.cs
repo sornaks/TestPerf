@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Mvc.Rendering;
 
 namespace TemplateRendererApp
 {
@@ -9,11 +10,21 @@ namespace TemplateRendererApp
     {
         public User()
         {
-            PastJobs = new List<string>();
+            PastJobs = new List<SelectListItem>();
         }
 
-        public string Name { get; set; }
+        public string FirstName { get; set; }
 
-        public List<string> PastJobs { get; set; }
+        public string LastName { get; set; }
+
+        public string HomePhone { get; set; }
+
+        public string Mobile { get; set; }
+
+        public string MailId { get; set; }
+
+        public string CurrentJob { get; set; }
+
+        public IEnumerable<SelectListItem> PastJobs { get; set; }
     }
 }

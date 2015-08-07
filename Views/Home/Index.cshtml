@@ -1,17 +1,23 @@
-﻿@model TemplateRendererApp.User
+﻿@using TemplateRendererApp
+@model IEnumerable<User>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>Simple Template Renderer sample.</title>
+    <style>
+        .contact-card
+        {
+            border: 1px solid #000000;
+        }
+    </style>
 </head>
 <body>
-    @Html.LabelFor(Model => Model.Name)
-    @Html.TextBoxFor(Model => Model.Name)
-    <br /><br />
-    @Html.LabelFor(Model => Model.PastJobs)
-    @Html.DropDownListFor(Model => Model.PastJobs, (IEnumerable<SelectListItem>)ViewBag.PastJobs)
-    <br /><br />
+    @foreach (var contact in Model)
+    {
+        await Html.RenderPartialAsync("TestPartial", contact);
+    }
+
     This is a simple View.
 </body>
 </html>

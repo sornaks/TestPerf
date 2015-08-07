@@ -10,15 +10,35 @@ namespace TemplateRendererApp
         public IActionResult Index()
         {
             var pastJobs = new List<string>();
-            for (var i=0; i<20000; i++)
+            for (var i=0; i<10; i++)
             {
                 pastJobs.Add("hello");
                 pastJobs.Add("world");
             }
 
-            ViewBag.PastJobs = new SelectList(pastJobs);
+            var users = new List<User>();
+            for (var i=0; i<50; i++)
+            {
+                users.Add(new User
+                {
+                    FirstName = "Simple",
+                    LastName = "User",
+                    HomePhone = "81275-912854-1",
+                    Mobile = "18295710923",
+                    MailId = "something@something.com",
+                    CurrentJob = "Some Random Job",
+                    PastJobs = new SelectList(pastJobs)
+                });
+            }
 
-            return View();
+            return View(users);
+        }
+
+        public IActionResult Edit(User user)
+        {
+            var result = new ContentResult();
+            result.Content = user.FirstName;
+            return result;
         }
     }
 }
